@@ -44,18 +44,6 @@
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="I2cBusSpeed.cs" />
-    <Compile Include="I2cConnectionSettings.cs" />
-    <Compile Include="I2cController.cs" />
-    <Compile Include="I2cControllerManager.cs" />
-    <Compile Include="I2cDevice.cs" />
-    <Compile Include="I2cSharingMode.cs" />
-    <Compile Include="I2cTransferResult.cs" />
-    <Compile Include="I2cTransferStatus.cs" />
-    <Compile Include="II2cDeviceStatics.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="key.snk" />
     <None Include="packages.config" />
   </ItemGroup>

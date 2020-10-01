@@ -6,7 +6,7 @@
                                                                                
 ===================================================================================
 
-API docs: https://docs.nanoframework.net/api/Windows.Devices.I2c.html
+API docs: https://docs.nanoframework.net/api/System.Device.I2c.html
 
 Browse our samples repository: https://github.com/nanoframework/samples
 

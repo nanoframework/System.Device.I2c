@@ -15,6 +15,7 @@ namespace System.Device.I2c
         /// The standard speed of 100 kilohertz (kHz). This speed is the default.
         /// </summary>
         StandardMode,
+
         /// <summary>
         /// A fast speed of 400 kHz.
         /// </summary>

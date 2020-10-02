@@ -19,6 +19,7 @@
     </tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.9.0-preview.5" />
+      <dependency id="nanoFramework.Windows.Devices.I2c" version="1.4.1-preview.11" />
     </dependencies>
   </metadata>
   <files>

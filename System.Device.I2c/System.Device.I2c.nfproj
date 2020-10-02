@@ -13,10 +13,10 @@
     <FileAlignment>512</FileAlignment>
     <RootNamespace>
     </RootNamespace>
-    <AssemblyName>Windows.Devices.I2c</AssemblyName>
+    <AssemblyName>System.Device.I2c</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
-    <NF_IsCoreLibrary>True</NF_IsCoreLibrary>
-    <DocumentationFile>bin\$(Configuration)\Windows.Devices.I2c.xml</DocumentationFile>
+    <!--<NF_IsCoreLibrary>True</NF_IsCoreLibrary>-->
+    <DocumentationFile>bin\$(Configuration)\System.Device.I2c.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -30,7 +30,7 @@
   <PropertyGroup>
     <!-- override default options for MetaDataProcessor -->
     <NF_GenerateStubsDirectory>bin\$(Configuration)\Stubs</NF_GenerateStubsDirectory>
-    <NF_GenerateSkeletonProjectName>win_dev_i2c_native</NF_GenerateSkeletonProjectName>
+    <NF_GenerateSkeletonProjectName>sys_dev_i2c_native</NF_GenerateSkeletonProjectName>
   </PropertyGroup>
   <ItemGroup>
     <NFMDP_PE_ExcludeClassByName Include="ThisAssembly">
@@ -44,6 +44,13 @@
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
+    <Compile Include="I2cBusSpeed.cs" />
+    <Compile Include="I2cConnectionSettings.cs" />
+    <Compile Include="I2cDevice.cs" />
+    <Compile Include="I2cSharingMode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="key.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -51,6 +58,11 @@
     <Reference Include="mscorlib, Version=1.9.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.9.0-preview.5\lib\mscorlib.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Windows.Devices.I2c, Version=1.4.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Windows.Devices.I2c.1.4.1-preview.11\lib\Windows.Devices.I2c.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
     </Reference>
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />

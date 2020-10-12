@@ -25,7 +25,7 @@ The list of contributors to this project can be found at [CONTRIBUTORS](https://
 
 ## License
 
-The **nanoFramework** Class Libraries are licensed under the [MIT license](LICENSE.md).
+The **nanoFramework** Class Libraries are licensed under the [MIT license](LICENSE).
 
 ## Code of Conduct
 

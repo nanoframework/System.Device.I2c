@@ -17,9 +17,6 @@ namespace System.Device.I2c
         private I2cBusSpeed _busSpeed;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private I2cSharingMode _sharingMode;
-
-        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private int _busId;
 
         private I2cConnectionSettings()
@@ -30,7 +27,7 @@ namespace System.Device.I2c
         /// </summary>
         /// <param name="busId">The bus ID the I2C device is connected to.</param>
         /// <param name="deviceAddress">The bus address of the I2C device.</param>
-        public I2cConnectionSettings(int busId, int deviceAddress) : this(busId, deviceAddress, I2cBusSpeed.FastMode, I2cSharingMode.Shared)
+        public I2cConnectionSettings(int busId, int deviceAddress) : this(busId, deviceAddress, I2cBusSpeed.FastMode)
         { }
 
         /// <summary>
@@ -39,13 +36,11 @@ namespace System.Device.I2c
         /// <param name="busId">The bus ID the I2C device is connected to.</param>
         /// <param name="deviceAddress">The bus address of the I2C device.</param>
         /// <param name="busSpeed">The bus speed of the I2C device.</param>
-        /// <param name="sharingMode">The sharing mode of the I2C device.</param>
-        public I2cConnectionSettings(int busId, int deviceAddress, I2cBusSpeed busSpeed, I2cSharingMode sharingMode)
+        public I2cConnectionSettings(int busId, int deviceAddress, I2cBusSpeed busSpeed)
         {
             _busId = busId;
             _deviceAddress = deviceAddress;
             _busSpeed = busSpeed;
-            _sharingMode = sharingMode;
         }
 
         internal I2cConnectionSettings(I2cConnectionSettings other)
@@ -53,7 +48,6 @@ namespace System.Device.I2c
             _busId = other.BusId;
             _deviceAddress = other.DeviceAddress;
             _busSpeed = other.BusSpeed;
-            _sharingMode = other.SharingMode;
         }
 
         /// <summary>
@@ -70,10 +64,5 @@ namespace System.Device.I2c
         /// The bus speed of the I2C device
         /// </summary>
         public I2cBusSpeed BusSpeed { get => _busSpeed; }
-
-        /// <summary>
-        /// Sharing mode of the I2C device
-        /// </summary>
-        public I2cSharingMode SharingMode { get => _sharingMode; }
     }
 }

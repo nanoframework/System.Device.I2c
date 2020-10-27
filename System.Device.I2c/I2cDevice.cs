@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System;
+using System.Runtime.CompilerServices;
 
 namespace System.Device.I2c
 {
@@ -11,16 +11,25 @@ namespace System.Device.I2c
     /// </summary>
     public class I2cDevice : IDisposable
     {
+        // this is used as the lock object 
+        // a lock is required because multiple threads can access the device
+        [Diagnostics.DebuggerBrowsable(Diagnostics.DebuggerBrowsableState.Never)]
+        private readonly object _syncLock;
 
-        private Windows.Devices.I2c.I2cDevice _device;
-        // For the ReadByte and WriteByte operations
-        private byte[] bufferSingleOperation = new byte[1];
+        [Diagnostics.DebuggerBrowsable(Diagnostics.DebuggerBrowsableState.Never)]
+        private readonly I2cConnectionSettings _connectionSettings;
+
+        [Diagnostics.DebuggerBrowsable(Diagnostics.DebuggerBrowsableState.Never)]
+        private bool _disposed;
+
+        // speeds up the execution of ReadByte and WriteByte operations
+        private readonly byte[] _buffer;
 
         /// <summary>
         /// The connection settings of a device on an I2C bus. The connection settings are immutable after the device is created
         /// so the object returned will be a clone of the settings object.
         /// </summary>
-        public I2cConnectionSettings ConnectionSettings { get; }
+        public I2cConnectionSettings ConnectionSettings { get => _connectionSettings; } 
 
         /// <summary>
         /// Reads a byte from the I2C device.
@@ -28,8 +37,14 @@ namespace System.Device.I2c
         /// <returns>A byte read from the I2C device.</returns>
         public byte ReadByte()
         {
-            _device.Read(bufferSingleOperation);
-            return bufferSingleOperation[0];
+            lock (_syncLock)
+            {
+                var buffer = new SpanByte(_buffer);
+
+                NativeTransmit(null, buffer);
+
+                return buffer[0];
+            }
         }
 
         /// <summary>
@@ -39,15 +54,11 @@ namespace System.Device.I2c
         /// The buffer to read the data from the I2C device.
         /// The length of the buffer determines how much data to read from the I2C device.
         /// </param>
-        public void Read(SpanByte buffer)
+        public I2cTransferResult Read(SpanByte buffer)
         {
-            // This is allocating an intermediate buffer and then copy back the data to 
-            // the SpanByte. This is intend to be changed in a native implementation
-            byte[] toRead = new byte[buffer.Length];
-            _device.Read(toRead);
-            for (int i = 0; i < toRead.Length; i++)
+            lock (_syncLock)
             {
-                buffer[i] = toRead[i];
+                return NativeTransmit(null, buffer);
             }
         }
 
@@ -55,10 +66,15 @@ namespace System.Device.I2c
         /// Writes a byte to the I2C device.
         /// </summary>
         /// <param name="value">The byte to be written to the I2C device.</param>
-        public void WriteByte(byte value)
+        public I2cTransferResult WriteByte(byte value)
         {
-            bufferSingleOperation[0] = value;
-            _device.Write(bufferSingleOperation);
+            lock (_syncLock)
+            {
+                // copy value
+                _buffer[0] = value;
+
+                return NativeTransmit(new SpanByte(_buffer), null);
+            }
         }
 
         /// <summary>
@@ -68,11 +84,12 @@ namespace System.Device.I2c
         /// The buffer that contains the data to be written to the I2C device.
         /// The data should not include the I2C device address.
         /// </param>
-        public void Write(SpanByte buffer)
+        public I2cTransferResult Write(SpanByte buffer)
         {
-            // This is allocating an intermediate buffer using the buffer of 
-            // the SpanByte. This is intend to be changed in a native implementation
-            _device.Write(buffer.ToArray());
+            lock (_syncLock)
+            {
+                return NativeTransmit(buffer, null);
+            }
         }
 
         /// <summary>
@@ -86,15 +103,11 @@ namespace System.Device.I2c
         /// The buffer to read the data from the I2C device.
         /// The length of the buffer determines how much data to read from the I2C device.
         /// </param>
-        public void WriteRead(SpanByte writeBuffer, SpanByte readBuffer)
+        public I2cTransferResult WriteRead(SpanByte writeBuffer, SpanByte readBuffer)
         {
-            // This is allocating an intermediate buffer and then copy back the data to 
-            // the SpanByte. This is intend to be changed in a native implementation
-            byte[] toRead = new byte[readBuffer.Length];
-            _device.WriteRead(writeBuffer.ToArray(), toRead);
-            for (int i = 0; i < toRead.Length; i++)
+            lock (_syncLock)
             {
-                readBuffer[i] = toRead[i];
+                return NativeTransmit(writeBuffer, readBuffer);
             }
         }
 
@@ -114,26 +127,65 @@ namespace System.Device.I2c
         /// <param name="settings">Connection settings</param>
         public I2cDevice(I2cConnectionSettings settings)
         {
-            ConnectionSettings = settings;
-            _device = Windows.Devices.I2c.I2cDevice.FromId($"I2C{settings.BusId}", new Windows.Devices.I2c.I2cConnectionSettings(settings.DeviceAddress)
-            {
-                BusSpeed = (Windows.Devices.I2c.I2cBusSpeed)settings.BusSpeed,
-                SharingMode = (Windows.Devices.I2c.I2cSharingMode)settings.SharingMode
-            });
+            _connectionSettings = settings;
+
+            // create the buffer
+            _buffer = new byte[1];
+
+            // create the lock object
+            _syncLock = new object();
+
+            // call native init to allow HAL/PAL inits related with I2C hardware
+            NativeInit();
         }
 
-        /// <inheritdoc cref="IDisposable.Dispose"/>
-        public void Dispose()
+        #region IDisposable Support
+
+        private void Dispose(bool disposing)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            if (!_disposed)
+            {
+                NativeDispose();
+
+                _disposed = true;
+            }
+        }
+
+#pragma warning disable 1591
+        ~I2cDevice()
+        {
+            Dispose(false);
         }
 
         /// <summary>
-        /// Disposes this instance
+        /// <inheritdoc cref="IDisposable.Dispose"/>
         /// </summary>
-        /// <param name="disposing"><see langword="true"/> if explicitly disposing, <see langword="false"/> if in finalizer</param>
-        void Dispose(bool disposing)
-        { }
+        public void Dispose()
+        {
+            lock (_syncLock)
+            {
+                if (!_disposed)
+                {
+                    Dispose(true);
+
+                    GC.SuppressFinalize(this);
+                }
+            }
+        }
+
+        #endregion
+
+        #region external calls to native implementations
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void NativeInit();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void NativeDispose();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern I2cTransferResult NativeTransmit(SpanByte writeBuffer, SpanByte readBuffer);
+
+        #endregion
     }
 }

@@ -1,8 +1,8 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-System.Device.I2c/tree/HEAD)
+## [v1.0.0-preview.9](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.0-preview.9) (2020-10-27)
 
-[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/afeac3697d8b4cd3130b230ddb8eb37ebc51361a...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/afeac3697d8b4cd3130b230ddb8eb37ebc51361a...v1.0.0-preview.9)
 
 **Implemented enhancements:**
 

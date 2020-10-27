@@ -10,8 +10,8 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| System.Device.I2c | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2c/_apis/build/status/nanoframework.lib-System.Device.I2c?branchName=develop)](https://dev.azure.com/nanoframework/System.Device.I2c/_build/latest?definitionId=28?branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Device.I2c.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Device.I2c/) |
-| System.Device.I2c (preview) | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2c/_apis/build/status/nanoframework.lib-System.Device.I2c?branchName=develop)](https://dev.azure.com/nanoframework/System.Device.I2c/_build/latest?definitionId=28?branchName=develop) | [![](https://badgen.net/badge/NuGet/preview/D7B023?icon=https://simpleicons.now.sh/azuredevops/fff)](https://dev.azure.com/nanoframework/feed/_packaging?_a=package&feed=sandbox&package=nanoFramework.System.Device.I2c&protocolType=NuGet&view=overview) |
+| System.Device.I2c | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2c/_apis/build/status/nanoframework.lib-System.Device.I2c?branchName=develop)](https://dev.azure.com/nanoframework/System.Device.I2c/_build/latest?definitionId=64&branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Device.I2c.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Device.I2c/) |
+| System.Device.I2c (preview) | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2c/_apis/build/status/nanoframework.lib-System.Device.I2c?branchName=develop)](https://dev.azure.com/nanoframework/System.Device.I2c/_build/latest?definitionId=64&branchName=develop) | [![](https://badgen.net/badge/NuGet/preview/D7B023?icon=https://simpleicons.now.sh/azuredevops/fff)](https://dev.azure.com/nanoframework/feed/_packaging?_a=package&feed=sandbox&package=nanoFramework.System.Device.I2c&protocolType=NuGet&view=overview) |
 
 ## Feedback and documentation
 

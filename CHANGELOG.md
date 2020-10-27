@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.1-preview.4](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.1-preview.4) (2020-10-27)
+
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.1...v1.0.1-preview.4)
+
 ## [v1.0.1-preview.1](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.1-preview.1) (2020-10-27)
 
 [Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.0-preview.9...v1.0.1-preview.1)

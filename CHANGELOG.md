@@ -1,5 +1,17 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-System.Device.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.6...HEAD)
+
+**Documentation and other chores:**
+
+- Update dependencies [\#12](https://github.com/nanoframework/lib-System.Device.I2c/pull/12)
+
+## [v1.0.1-preview.6](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.1-preview.6) (2020-10-27)
+
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.4...v1.0.1-preview.6)
+
 ## [v1.0.1-preview.4](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.1-preview.4) (2020-10-27)
 
 [Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.1...v1.0.1-preview.4)

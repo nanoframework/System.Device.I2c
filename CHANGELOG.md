@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-System.Device.I2c/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.18...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.23...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.1-preview.11 to 1.10.3-preview.7 [\#20](https://github.com/nanoframework/lib-System.Device.I2c/pull/20)
+
+## [v1.0.1-preview.23](https://github.com/nanoframework/lib-System.Device.I2c/tree/v1.0.1-preview.23) (2021-03-02)
+
+[Full Changelog](https://github.com/nanoframework/lib-System.Device.I2c/compare/v1.0.1-preview.18...v1.0.1-preview.23)
 
 **Documentation and other chores:**
 

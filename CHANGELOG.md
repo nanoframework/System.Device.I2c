@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Device.I2c/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.6...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.8...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#43](https://github.com/nanoframework/System.Device.I2c/pull/43)
+
+## [v1.0.3-preview.8](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.3-preview.8) (2022-02-17)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.6...v1.0.3-preview.8)
 
 **Documentation and other chores:**
 

@@ -1,8 +1,8 @@
 # Changelog
 
-## [v1.0.2-preview.8](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.2-preview.8) (2021-12-02)
+## [v1.0.3-preview.15](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.3-preview.15) (2022-03-28)
 
-[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.13...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.13...v1.0.3-preview.15)
 
 **Documentation and other chores:**
 

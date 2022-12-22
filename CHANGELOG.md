@@ -1,5 +1,23 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Device.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#51](https://github.com/nanoframework/System.Device.I2c/pull/51)
+- Update 1 NuGet dependencies [\#49](https://github.com/nanoframework/System.Device.I2c/pull/49)
+- Update 1 NuGet dependencies [\#47](https://github.com/nanoframework/System.Device.I2c/pull/47)
+
+## [v1.0.3](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.3) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.15...v1.0.3)
+
+**Documentation and other chores:**
+
+- release-v1.0.3 [\#46](https://github.com/nanoframework/System.Device.I2c/pull/46)
+
 ## [v1.0.3-preview.15](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.3-preview.15) (2022-03-28)
 
 [Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3-preview.13...v1.0.3-preview.15)
@@ -52,6 +70,10 @@
 
 [Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.2-preview.8...v1.0.2)
 
+**Documentation and other chores:**
+
+- release-v1.0.2 [\#39](https://github.com/nanoframework/System.Device.I2c/pull/39)
+
 ## [v1.0.2-preview.8](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.2-preview.8) (2021-12-02)
 
 [Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.2-preview.6...v1.0.2-preview.8)
@@ -71,6 +93,10 @@
 ## [v1.0.1](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.1) (2021-07-16)
 
 [Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.1-preview.40...v1.0.1)
+
+**Documentation and other chores:**
+
+- release-v1.0.1 [\#35](https://github.com/nanoframework/System.Device.I2c/pull/35)
 
 ## [v1.0.1-preview.40](https://github.com/nanoframework/System.Device.I2c/tree/v1.0.1-preview.40) (2021-07-14)
 

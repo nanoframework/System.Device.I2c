@@ -1,8 +1,8 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Device.I2c/tree/HEAD)
+## [v1.1.6](https://github.com/nanoframework/System.Device.I2c/tree/v1.1.6) (2022-12-22)
 
-[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3...v1.1.6)
 
 **Documentation and other chores:**
 

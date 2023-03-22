@@ -1,5 +1,17 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Device.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.1.9...HEAD)
+
+**Implemented enhancements:**
+
+- Adding I2C Fast Mode Plus [\#52](https://github.com/nanoframework/System.Device.I2c/pull/52)
+
+## [v1.1.9](https://github.com/nanoframework/System.Device.I2c/tree/v1.1.9) (2022-12-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.1.6...v1.1.9)
+
 ## [v1.1.6](https://github.com/nanoframework/System.Device.I2c/tree/v1.1.6) (2022-12-22)
 
 [Full Changelog](https://github.com/nanoframework/System.Device.I2c/compare/v1.0.3...v1.1.6)

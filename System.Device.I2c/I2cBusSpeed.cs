@@ -19,6 +19,11 @@ namespace System.Device.I2c
         /// <summary>
         /// A fast speed of 400 kHz.
         /// </summary>
-        FastMode
+        FastMode,
+
+        /// <summary>
+        /// A super fast speed of 1 MHz.
+        /// </summary>
+        FastModePlus
     }
 }

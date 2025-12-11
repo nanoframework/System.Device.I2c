@@ -1,6 +1,5 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
 
 using System.Runtime.CompilerServices;
 
@@ -39,11 +38,9 @@ namespace System.Device.I2c
         {
             lock (_syncLock)
             {
-                var buffer = new SpanByte(_buffer);
+                NativeTransmit(default, new Span<byte>(_buffer));
 
-                NativeTransmit(null, buffer);
-
-                return buffer[0];
+                return _buffer[0];
             }
         }
 
@@ -54,11 +51,11 @@ namespace System.Device.I2c
         /// The buffer to read the data from the I2C device.
         /// The length of the buffer determines how much data to read from the I2C device.
         /// </param>
-        public I2cTransferResult Read(SpanByte buffer)
+        public I2cTransferResult Read(Span<byte> buffer)
         {
             lock (_syncLock)
             {
-                return NativeTransmit(null, buffer);
+                return NativeTransmit(default, buffer);
             }
         }
 
@@ -70,10 +67,11 @@ namespace System.Device.I2c
         {
             lock (_syncLock)
             {
-                // copy value
                 _buffer[0] = value;
 
-                return NativeTransmit(new SpanByte(_buffer), null);
+                return NativeTransmit(
+                    new ReadOnlySpan<byte>(_buffer),
+                    default);
             }
         }
 
@@ -84,11 +82,11 @@ namespace System.Device.I2c
         /// The buffer that contains the data to be written to the I2C device.
         /// The data should not include the I2C device address.
         /// </param>
-        public I2cTransferResult Write(SpanByte buffer)
+        public I2cTransferResult Write(ReadOnlySpan<byte> buffer)
         {
             lock (_syncLock)
             {
-                return NativeTransmit(buffer, null);
+                return NativeTransmit(buffer, default);
             }
         }
 
@@ -103,7 +101,7 @@ namespace System.Device.I2c
         /// The buffer to read the data from the I2C device.
         /// The length of the buffer determines how much data to read from the I2C device.
         /// </param>
-        public I2cTransferResult WriteRead(SpanByte writeBuffer, SpanByte readBuffer)
+        public I2cTransferResult WriteRead(ReadOnlySpan<byte> writeBuffer, Span<byte> readBuffer)
         {
             lock (_syncLock)
             {
@@ -184,7 +182,9 @@ namespace System.Device.I2c
         private extern void NativeDispose();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern I2cTransferResult NativeTransmit(SpanByte writeBuffer, SpanByte readBuffer);
+        private extern I2cTransferResult NativeTransmit(
+            ReadOnlySpan<byte> writeBuffer,
+            Span<byte> readBuffer);
 
         #endregion
     }

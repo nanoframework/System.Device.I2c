@@ -1,6 +1,5 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
 
 namespace System.Device.I2c
 {
@@ -17,13 +16,13 @@ namespace System.Device.I2c
         private readonly I2cTransferStatus _status;
 
         /// <summary>
-        /// The actual number of bytes that the operation actually transferred. The following table describes what this value represents for each method.
+        /// The actual number of bytes that the operation actually transferred.
         /// </summary>
         public uint BytesTransferred { get => _bytesTransferred; }
 
         /// <summary>
         /// An enumeration value that indicates if the read or write operation transferred the full number of bytes that the method requested, or the reason
-        /// that the full transfer did not succeed. For WriteReadPartial, the value indicates whether the data for both the write and the read operations was entirely transferred.
+        /// that the full transfer did not succeed. For <see cref="I2cTransferStatus.PartialTransfer"/>, the value indicates whether the data for both the write and the read operations was entirely transferred.
         /// </summary>
         public I2cTransferStatus Status { get => _status; }
     }
